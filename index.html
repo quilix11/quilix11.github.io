@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кафе "Вечірній вокзал" | Домашня кухня цілодобово у Львові</title>
+    <meta name="description" content="Кафе 'Вечірній вокзал' біля залізничного вокзалу м. Львів. Затишна домашня кухня, борщ зі сметанкою, білосніжні скатертини, фірмовий комплімент 50г від Пані Лесі. Працюємо 24/7 цілодобово.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Dynamic Holiday Warning Banner -->
+    <div class="holiday-banner" id="holidayBanner">
+        <div class="container holiday-content">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span><strong>З Днем Незалежності України!</strong> У зв'язку зі святом графік роботи або наявність окремих страв може уточнюватися за телефонуванням.</span>
+            <button class="banner-close-btn" id="closeBannerBtn" aria-label="Закрити">&times;</button>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-train"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="brand-name">Вечірній Вокзал</span>
+                    <span class="brand-sub">Кафе домашньої кухні</span>
+                </div>
+            </a>
+
+            <div class="status-pill open" id="liveStatusPill">
+                <span class="status-dot"></span>
+                <span class="status-text">Відчинено 24/7</span>
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-link active">Головна</a>
+                <a href="#about" class="nav-link">Про нас</a>
+                <a href="#menu" class="nav-link">Меню</a>
+                <a href="#reviews" class="nav-link">Відгуки</a>
+                <a href="#location" class="nav-link">Контакти</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="tel:+380970000000" class="btn btn-secondary btn-sm" id="callNavBtn">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Зателефонувати</span>
+                </a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Меню">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-overlay"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>2 хвилини від Залізничного Вокзалу м. Львів</span>
+                </div>
+                <h1 class="hero-title">Тепло, затишок та домашня кухня <span>цілодобово</span></h1>
+                <p class="hero-description">
+                    Завітайте до нас після дороги або перед потягом! На вас чекають свіжий борщик зі сметанкою, чистота білосніжних скатертин, чудова атмосфера та <strong>фірмовий комплімент 50г</strong> від нашої Пані Лесі.
+                </p>
+                <div class="hero-rating-strip">
+                    <div class="rating-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <span class="rating-score">3.3 / 5.0</span>
+                    <span class="rating-count">(29+ відгуків на Google Maps)</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary btn-lg">
+                        <i class="fa-solid fa-utensils"></i>
+                        Переглянути Меню
+                    </a>
+                    <a href="#location" class="btn btn-glass btn-lg">
+                        <i class="fa-solid fa-route"></i>
+                        Прокласти маршрут
+                    </a>
+                </div>
+            </div>
+            <div class="hero-card-preview">
+                <div class="glass-card hero-feature-card">
+                    <div class="feature-header">
+                        <div class="feature-icon-box">
+                            <i class="fa-solid fa-wine-glass-sparkles"></i>
+                        </div>
+                        <div>
+                            <h4>Подарунок для кожного гостя!</h4>
+                            <p>Комплімент від закладу — 50г та канапка від Пані Лесі</p>
+                        </div>
+                    </div>
+                    <div class="hero-card-img">
+                        <img src="assets/images/borscht.png" alt="Борщ із сметаною" loading="lazy">
+                        <div class="img-badge">Свіже щодня</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Highlights / Features -->
+    <section class="features-section">
+        <div class="container grid-features">
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <h3>Відчинено 24/7</h3>
+                <p>Працюємо цілодобово без перерв та вихідних. Гаряча поживна їжа о будь-якій пору ночі.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-bowl-hot"></i>
+                </div>
+                <h3>Справжня домашня кухня</h3>
+                <p>Борщик із сметанкою, пампушки, деруни, котлети — усе як удома, а не сухий фаст-фуд.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-sparkles"></i>
+                </div>
+                <h3>Ідеальна чистота</h3>
+                <p>Бездоганні білі скатертини, чистота посуду та атмосферне обслуговування від Пані Лесі.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+                <h3>Доступні ціни біля ж/д</h3>
+                <p>Найвигідніший варіант смачно та ситно поїсти безпосередньо біля залізничного вокзалу.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container grid-about">
+            <div class="about-gallery">
+                <div class="about-img-main">
+                    <img src="assets/images/interior.png" alt="Інтер'єр кафе Вечірній вокзал" loading="lazy">
+                </div>
+                <div class="about-img-sub">
+                    <img src="assets/images/hero.png" alt="Атмосфера кафе" loading="lazy">
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="section-tag">Про наше кафе</div>
+                <h2 class="section-title">Місце, де турбуються про комфорт кожного гостя</h2>
+                <p class="section-desc">
+                    Завітавши до кафе <strong>"Вечірній вокзал"</strong>, ви потрапляєте в атмосферу щирого львівського затишку. Наш заклад знаходиться в кількох кроках від головного вокзалу, щоб ви могли відпочити з дороги, швидко перекусити справжньою гарячою їжею або зігрітися духмяним чаєм.
+                </p>
+                <div class="about-bullets">
+                    <div class="bullet-item">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>Традиційні рецепти української та домашньої кухні</span>
+                    </div>
+                    <div class="bullet-item">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>Привітні господині та легендарний сервіс від Пані Лесі</span>
+                    </div>
+                    <div class="bullet-item">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>Безкоштовний Wi-Fi та зручні місця для відпочинку з багажем</span>
+                    </div>
+                </div>
+                <div class="quote-box">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p>"Неймовірно затишне місце! Відчув себе як вдома. Борщик — неймовірний, горілочка — смачнюща, ще й комплімент отримали."</p>
+                    <span class="quote-author">— З відгуку постійного гостя</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-tag">Наше Меню</div>
+                <h2 class="section-title">Свіжі страви кожної години</h2>
+                <p class="section-desc">Повноцінний обід або легкий перекус — обирайте страви до смаку</p>
+            </div>
+
+            <!-- Menu Category Tabs -->
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-category="all">Усі страви</button>
+                <button class="tab-btn" data-category="soups">Борщі та Перші страви</button>
+                <button class="tab-btn" data-category="mains">Основні страви</button>
+                <button class="tab-btn" data-category="compliments">Напої & Компліменти</button>
+                <button class="tab-btn" data-category="desserts">Салати & Десерти</button>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div class="menu-grid" id="menuGrid">
+                <!-- Item 1 -->
+                <div class="menu-card" data-category="soups">
+                    <div class="menu-card-img">
+                        <img src="assets/images/borscht.png" alt="Борщ український">
+                        <span class="card-badge tag-hit">Хіт продажів</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-title">
+                            <h3>Борщ Український із сметанкою</h3>
+                            <span class="menu-price">85 ₴</span>
+                        </div>
+                        <p class="menu-desc">Насичений наваристий борщ за старовинним рецептом із духмяною сметаною та свіжою зеленню.</p>
+                        <div class="menu-footer">
+                            <span class="portion-size"><i class="fa-solid fa-weight-hanging"></i> 350г</span>
+                            <button class="btn-order-item" onclick="orderItem('Борщ Український')">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-card" data-category="soups">
+                    <div class="menu-card-body standalone">
+                        <div class="menu-card-title">
+                            <h3>Пампушки з часником (3 шт)</h3>
+                            <span class="menu-price">25 ₴</span>
+                        </div>
+                        <p class="menu-desc">М'які пухкі пампушки, змащені часниковим соусом та кропом. Ідеально до борщу.</p>
+                        <div class="menu-footer">
+                            <span class="portion-size"><i class="fa-solid fa-weight-hanging"></i> 100г</span>
+                            <button class="btn-order-item" onclick="orderItem('Пампушки з часником')">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-card" data-category="compliments">
+                    <div class="menu-card-body standalone gift-card">
+                        <span class="card-badge tag-gift">Подарунок 🎁</span>
+                        <div class="menu-card-title">
+                            <h3>Комплімент від Пані Лесі</h3>
+                            <span class="menu-price free">0 ₴</span>
+                        </div>
+                        <p class="menu-desc">50г фірмової чарки та канапка з духмяним салом і солоним огірочком для кожного гостя закладу!</p>
+                        <div class="menu-footer">
+                            <span class="portion-size"><i class="fa-solid fa-gift"></i> Безкоштовно</span>
+                            <button class="btn-order-item gift-btn" onclick="orderItem('Комплімент від Пані Лесі')">Отримати</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-card" data-category="mains">
+                    <div class="menu-card-body standalone">
+                        <div class="menu-card-title">
+                            <h3>Вареники з картоплею та шкварками</h3>
+                            <span class="menu-price">75 ₴</span>
+                        </div>
+                        <p class="menu-desc">Домашні ліплені вареники з ніжним картопляним пюре, золотавою цибулькою та шкварками.</p>
+                        <div class="menu-footer">
+                            <span class="portion-size"><i class="fa-solid fa-weight-hanging"></i> 250г</span>
+                            <button class="btn-order-item" onclick="orderItem('Вареники з картоплею')">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-card" data-category="mains">
+                    <div class="menu-card-body standalone">
+                        <div class="menu-card-title">
+                            <h3>Котлета по-київськи з ніжним пюре</h3>
+                            <span class="menu-price">110 ₴</span>
+                        </div>
+                        <p class="menu-desc">Соковита куряча котлета з вершковим маслом у хрусткій паніровці, подається з гарячим картопляним пюре.</p>
+                        <div class="menu-footer">
+                            <span class="portion-size"><i class="fa-solid fa-weight-hanging"></i> 300г</span>
+                            <button class="btn-order-item" onclick="orderItem('Котлета по-київськи')">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="menu-card" data-category="mains">
+                    <div class="menu-card-body standalone">
+                        <div class="menu-card-title">
+                            <h3>Деруни картопляні зі сметаною</h3>
+                            <span class="menu-price">80 ₴</span>
+                        </div>
+                        <p class="menu-desc">Золотисті хрусткі деруни з тертої картоплі, змащені домашньою сметаною.</p>
+                        <div class="menu-footer">
+                            <span class="portion-size"><i class="fa-solid fa-weight-hanging"></i> 220г</span>
+                            <button class="btn-order-item" onclick="orderItem('Деруни картопляні')">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 7 -->
+                <div class="menu-card" data-category="compliments">
+                    <div class="menu-card-body standalone">
+                        <div class="menu-card-title">
+                            <h3>Чай з чебрецем та лимоном / Духмяна кава</h3>
+                            <span class="menu-price">30 ₴</span>
+                        </div>
+                        <p class="menu-desc">Гарячий трав'яний чай або натуральна свіжозварена кава для відновлення сил перед поїздкою.</p>
+                        <div class="menu-footer">
+                            <span class="portion-size"><i class="fa-solid fa-mug-hot"></i> 250мл</span>
+                            <button class="btn-order-item" onclick="orderItem('Гарячий чай / Кава')">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 8 -->
+                <div class="menu-card" data-category="desserts">
+                    <div class="menu-card-body standalone">
+                        <div class="menu-card-title">
+                            <h3>Салат "Свіжість" з овочами</h3>
+                            <span class="menu-price">65 ₴</span>
+                        </div>
+                        <p class="menu-desc">Свіжі огірки, томати, болгарський перець, зелень, заправлені соняшниковою олією або сметаною.</p>
+                        <div class="menu-footer">
+                            <span class="portion-size"><i class="fa-solid fa-weight-hanging"></i> 180г</span>
+                            <button class="btn-order-item" onclick="orderItem('Салат Свіжість')">Замовити</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-tag">Google Відгуки</div>
+                <h2 class="section-title">Що про нас кажуть гості</h2>
+                <p class="section-desc">Реальні відгуки мандрівників та львів'ян</p>
+            </div>
+
+            <!-- Reviews Score Summary Header -->
+            <div class="reviews-summary-card">
+                <div class="summary-score-box">
+                    <span class="big-score" id="avgScoreDisplay">3.3</span>
+                    <div class="stars-gold">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <span class="summary-total" id="totalReviewsDisplay">Загалом 29 відгуків</span>
+                </div>
+                <div class="summary-bars">
+                    <div class="bar-row"><span>5 ★</span><div class="progress"><div class="fill" style="width: 45%;"></div></div></div>
+                    <div class="bar-row"><span>4 ★</span><div class="progress"><div class="fill" style="width: 20%;"></div></div></div>
+                    <div class="bar-row"><span>3 ★</span><div class="progress"><div class="fill" style="width: 15%;"></div></div></div>
+                    <div class="bar-row"><span>2 ★</span><div class="progress"><div class="fill" style="width: 10%;"></div></div></div>
+                    <div class="bar-row"><span>1 ★</span><div class="progress"><div class="fill" style="width: 10%;"></div></div></div>
+                </div>
+                <div class="summary-action">
+                    <button class="btn btn-primary" id="openReviewModalBtn">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Додати свій відгук
+                    </button>
+                </div>
+            </div>
+
+            <!-- Reviews Grid Showcase -->
+            <div class="reviews-grid" id="reviewsGrid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="avatar-circle">ОЛ</div>
+                        <div>
+                            <h4 class="reviewer-name">Олексій М.</h4>
+                            <span class="review-date">3 роки тому</span>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="review-text">
+                        "Це недорогий варіант поїсти біля вокзалу. Страви як в столовій, атмосфера така ж сама. Швидко перекусити звичайною їжею, а не печивом, круасанами чи фаст-фудом. Все свіже!"
+                    </p>
+                    <div class="review-chip">📍 Поїздка / Перекус біля ж/д</div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="avatar-circle avatar-alt">ВБ</div>
+                        <div>
+                            <h4 class="reviewer-name">Вадим & Товариш</h4>
+                            <span class="review-date">10 місяців тому</span>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="review-text">
+                        "Побував тут з товаришем. Хотів відмітити чистоту скатертини, якість та швидкість обслуговування. Замовив борщик, все як люблю, зі сметанкою, без м'яса. Дуже смачно!"
+                    </p>
+                    <div class="review-chip">🥣 Борщ зі сметанкою</div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card highlight-card">
+                    <div class="review-header">
+                        <div class="avatar-circle avatar-gold">ПЛ</div>
+                        <div>
+                            <h4 class="reviewer-name">Ігор Т.</h4>
+                            <span class="review-date">10 місяців тому</span>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="review-text">
+                        "Неймовірно затишне місце, де турбуються про комфорт гостей. Пані Леся - чарівниця! Відчув себе як вдома. Борщик - неймовірний, горілочка - смачнюща, ще й комплімент від закладу отримали в вигляді подарункових 50 грам. Посуд, інтер’єр... 10/10!"
+                    </p>
+                    <div class="review-chip gold-chip">✨ Комплімент 50г & Пані Леся</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Directions Section -->
+    <section class="location-section" id="location">
+        <div class="container grid-location">
+            <div class="location-info">
+                <div class="section-tag">Локація та Графік</div>
+                <h2 class="section-title">Як нас знайти біля вокзалу</h2>
+                <p class="section-desc">Ми знаходимося безпосередньо біля виходу з Головного Залізничного Вокзалу м. Львів.</p>
+                
+                <div class="info-list">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4>Адреса</h4>
+                            <p>м. Львів, пл. Двірцева (біля Залізничного Вокзалу)</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <h4>Графік роботи</h4>
+                            <p><strong>Відчинено цілодобово (24/7)</strong><br><small class="text-amber">* Графік може коригуватися у святкові дні</small></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h4>Телефон для довідок та замовлень</h4>
+                            <p><a href="tel:+380970000000" class="phone-link">+38 (097) 000-00-00</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nearby-places">
+                    <h4>Поруч із нами:</h4>
+                    <div class="tags-cloud">
+                        <span class="place-tag"><i class="fa-solid fa-train"></i> Львів ж/д (2 хв)</span>
+                        <span class="place-tag"><i class="fa-solid fa-utensils"></i> Дорога Смаку</span>
+                        <span class="place-tag"><i class="fa-solid fa-building-columns"></i> Stare Misto</span>
+                        <span class="place-tag"><i class="fa-solid fa-ice-cream"></i> Файні Льоди</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulated Map Component -->
+            <div class="map-container">
+                <div class="map-card">
+                    <div class="map-mockup">
+                        <div class="map-overlay-center">
+                            <div class="map-pin pulse-pin">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <div class="map-popup">
+                                <strong>Кафе "Вечірній вокзал"</strong>
+                                <span>пл. Двірцева, м. Львів</span>
+                                <span class="badge-247">🟢 24/7 Відчинено</span>
+                            </div>
+                        </div>
+                        <img src="assets/images/hero.png" alt="Карта доїзду" class="map-bg-img">
+                    </div>
+                    <div class="map-footer">
+                        <a href="https://maps.google.com/?q=Львів+Залізничний+вокзал" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+                            <i class="fa-solid fa-map-location-dot"></i> Відкрити в Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="brand-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-train"></i></div>
+                    <span class="brand-name">Вечірній Вокзал</span>
+                </div>
+                <p class="footer-tagline">Домашня кухня, затишок та гостинність у Львові 24 години на добу.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Навігація</h4>
+                <a href="#hero">Головна</a>
+                <a href="#about">Про нас</a>
+                <a href="#menu">Меню</a>
+                <a href="#reviews">Відгуки</a>
+                <a href="#location">Контакти</a>
+            </div>
+            <div class="footer-meta">
+                <h4>Статус сайту</h4>
+                <div class="github-badge">
+                    <i class="fa-brands fa-github"></i>
+                    <span>Hosted on GitHub Pages</span>
+                </div>
+                <p class="copy-text">&copy; 2026 Кафе "Вечірній вокзал". Усі права захищено.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Review Modal -->
+    <div class="modal-backdrop" id="reviewModal">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3>Залишити відгук про кафе</h3>
+                <button class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <form id="addReviewForm" onsubmit="handleReviewSubmit(event)">
+                <div class="form-group">
+                    <label for="reviewerNameInput">Ваше ім'я:</label>
+                    <input type="text" id="reviewerNameInput" class="form-input" placeholder="Наприклад: Андрій" required>
+                </div>
+                <div class="form-group">
+                    <label>Ваша оцінка:</label>
+                    <div class="star-rating-select" id="starSelect">
+                        <i class="fa-solid fa-star active" data-rating="1"></i>
+                        <i class="fa-solid fa-star active" data-rating="2"></i>
+                        <i class="fa-solid fa-star active" data-rating="3"></i>
+                        <i class="fa-solid fa-star active" data-rating="4"></i>
+                        <i class="fa-solid fa-star active" data-rating="5"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reviewTextInput">Ваш відгук:</label>
+                    <textarea id="reviewTextInput" class="form-input form-textarea" rows="4" placeholder="Розкажіть про свої враження, борщик або обслуговування..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Опублікувати відгук</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
