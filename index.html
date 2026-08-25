@@ -19,6 +19,64 @@
     
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- In-file Layout Fixes (Overriding style.css grid conflicts) -->
+    <style>
+        body {
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            color: #212529;
+        }
+        .container {
+            width: 100% !important;
+            max-width: 1200px !important;
+            margin-inline: auto !important;
+            padding-inline: 15px !important;
+        }
+        /* Fix Grid / Row conflicts */
+        .menu-grid, .grid-features, .grid-about, .grid-location, .reviews-grid {
+            display: flex !important;
+            flex-wrap: wrap !important;
+        }
+        .menu-card {
+            display: block !important;
+            width: 100% !important;
+        }
+        @media (min-width: 768px) {
+            .menu-card {
+                flex: 0 0 auto !important;
+                width: 50% !important;
+            }
+        }
+        @media (min-width: 992px) {
+            .menu-card {
+                flex: 0 0 auto !important;
+                width: 33.33333333% !important;
+            }
+        }
+        .menu-card .card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .menu-card .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+        }
+        .menu-card-img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #495057;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #0d6efd !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -35,7 +93,7 @@
 
     <!-- Navigation Header -->
     <header class="navbar navbar-expand-lg sticky-top bg-white border-bottom shadow-sm" id="navbar">
-        <div class="container navbar-container">
+        <div class="container">
             <a href="#" class="brand-logo navbar-brand d-flex align-items-center gap-2 text-decoration-none">
                 <div class="logo-icon fs-3 text-primary">
                     <i class="fa-solid fa-train"></i>
@@ -76,7 +134,6 @@
 
     <!-- Hero Section -->
     <section class="hero py-5" id="hero">
-        <div class="hero-bg-overlay"></div>
         <div class="container hero-container">
             <div class="row align-items-center gy-4">
                 <div class="col-lg-7 hero-content">
@@ -85,7 +142,7 @@
                         <span>2 хвилини від Залізничного Вокзалу м. Львів</span>
                     </div>
                     <h1 class="hero-title display-5 fw-bold mb-3">Тепло, затишок та домашня кухня <span>цілодобово</span></h1>
-                    <p class="hero-description lead mb-4">
+                    <p class="hero-description lead mb-4 text-muted">
                         Завітайте до нас після дороги або перед потягом! На вас чекають свіжий борщик зі сметанкою, чистота білосніжних скатертин, чудова атмосфера та <strong>фірмовий комплімент 50г</strong> від нашої Пані Лесі.
                     </p>
                     <div class="hero-rating-strip d-flex align-items-center gap-2 mb-4">
@@ -103,13 +160,13 @@
                         <a href="#menu" class="btn btn-primary btn-lg">
                             <i class="fa-solid fa-utensils me-2"></i>Переглянути Меню
                         </a>
-                        <a href="#location" class="btn btn-glass btn-outline-secondary btn-lg">
+                        <a href="#location" class="btn btn-outline-secondary btn-lg">
                             <i class="fa-solid fa-route me-2"></i>Прокласти маршрут
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-5 hero-card-preview">
-                    <div class="glass-card hero-feature-card card shadow p-3">
+                    <div class="card shadow p-3 border-0 rounded-4">
                         <div class="feature-header d-flex align-items-center gap-3 mb-3">
                             <div class="feature-icon-box fs-2 text-warning">
                                 <i class="fa-solid fa-wine-glass-sparkles"></i>
@@ -120,7 +177,7 @@
                             </div>
                         </div>
                         <div class="hero-card-img position-relative overflow-hidden rounded">
-                            <img src="assets/images/borscht.png" alt="Борщ із сметаною" class="img-fluid w-100 rounded" loading="lazy">
+                            <img src="assets/images/borscht.png" alt="Борщ із сметаною" class="img-fluid w-100 rounded" loading="lazy" style="height: 220px; object-fit: cover;">
                             <div class="img-badge badge bg-danger position-absolute top-0 start-0 m-2">Свіже щодня</div>
                         </div>
                     </div>
@@ -131,7 +188,7 @@
 
     <!-- Key Highlights / Features -->
     <section class="features-section py-5 bg-light">
-        <div class="container grid-features">
+        <div class="container">
             <div class="row g-4">
                 <div class="col-sm-6 col-lg-3">
                     <div class="feature-box card h-100 p-4 border-0 shadow-sm text-center">
@@ -139,7 +196,7 @@
                             <i class="fa-solid fa-clock"></i>
                         </div>
                         <h3 class="h5">Відчинено 24/7</h3>
-                        <p class="text-muted small mb-0">Працюємо цілодобово без перерв та вихідних. Гаряча поживна їжа о будь-якій пору ночі.</p>
+                        <p class="text-muted small mb-0">Працюємо цілодобово без перерв та вихідних. Гаряча поживна їжа о будь-якій порі ночі.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
@@ -175,7 +232,7 @@
 
     <!-- About Section -->
     <section class="about-section py-5" id="about">
-        <div class="container grid-about">
+        <div class="container">
             <div class="row align-items-center gy-4">
                 <div class="col-lg-6 about-gallery">
                     <div class="row g-3">
@@ -391,7 +448,7 @@
             </div>
 
             <!-- Reviews Score Summary Header -->
-            <div class="reviews-summary-card card p-4 mb-4 shadow-sm">
+            <div class="reviews-summary-card card p-4 mb-4 shadow-sm border-0">
                 <div class="row align-items-center gy-3">
                     <div class="col-md-4 text-center summary-score-box">
                         <span class="big-score display-4 fw-bold" id="avgScoreDisplay">3.3</span>
@@ -495,7 +552,7 @@
 
     <!-- Location & Directions Section -->
     <section class="location-section py-5 bg-light" id="location">
-        <div class="container grid-location">
+        <div class="container">
             <div class="row align-items-center gy-4">
                 <div class="col-lg-6 location-info">
                     <div class="section-tag badge bg-primary-subtle text-primary mb-2">Локація та Графік</div>
@@ -576,7 +633,7 @@
                     <p class="footer-tagline text-secondary small">Домашня кухня, затишок та гостинність у Львові 24 години на добу.</p>
                 </div>
                 <div class="col-md-4 footer-links">
-                    <h4 class="h6 mb-3">Навігація</h4>
+                    <h4 class="h6 mb-3 text-white">Навігація</h4>
                     <div class="d-flex flex-column gap-1">
                         <a href="#hero" class="text-secondary text-decoration-none small">Головна</a>
                         <a href="#about" class="text-secondary text-decoration-none small">Про нас</a>
@@ -586,7 +643,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 footer-meta">
-                    <h4 class="h6 mb-3">Статус сайту</h4>
+                    <h4 class="h6 mb-3 text-white">Статус сайту</h4>
                     <div class="github-badge badge bg-secondary mb-2">
                         <i class="fa-brands fa-github me-1"></i>
                         <span>Hosted on GitHub Pages</span>
@@ -598,18 +655,18 @@
     </footer>
 
     <!-- Review Modal -->
-    <div class="modal-backdrop modal fade" id="reviewModal" tabindex="-1" aria-hidden="true" style="background: rgba(0,0,0,0.5);">
-        <div class="modal-dialog modal-dialog-centered modal-window">
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title h5">Залишити відгук про кафе</h3>
-                    <button type="button" class="btn-close modal-close" id="closeModalBtn" aria-label="Close"></button>
+                    <button type="button" class="btn-close" id="closeModalBtn" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="addReviewForm" onsubmit="handleReviewSubmit(event)">
                         <div class="form-group mb-3">
                             <label for="reviewerNameInput" class="form-label">Ваше ім'я:</label>
-                            <input type="text" id="reviewerNameInput" class="form-input form-control" placeholder="Наприклад: Андрій" required>
+                            <input type="text" id="reviewerNameInput" class="form-control" placeholder="Наприклад: Андрій" required>
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-label d-block">Ваша оцінка:</label>
@@ -623,9 +680,9 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="reviewTextInput" class="form-label">Ваш відгук:</label>
-                            <textarea id="reviewTextInput" class="form-input form-textarea form-control" rows="4" placeholder="Розкажіть про свої враження, борщик або обслуговування..." required></textarea>
+                            <textarea id="reviewTextInput" class="form-control" rows="4" placeholder="Розкажіть про свої враження, борщик або обслуговування..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block w-100">Опублікувати відгук</button>
+                        <button type="submit" class="btn btn-primary w-100">Опублікувати відгук</button>
                     </form>
                 </div>
             </div>
