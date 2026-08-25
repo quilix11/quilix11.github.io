@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кафе "Вечірній вокзал" | Домашня кухня цілодобово у Львові</title>
-    <meta name="description" content="Кафе 'Вечірній вокзал' біля залізничного вокзалу м. Львів. Затишна домашня кухня, борщ зі сметанкою, білосніжні скатертини, фірмовий комплімент 50г від Пані Лесі. Працюємо 24/7 цілодобово.">
-    
+    <meta name="description" content="Кафе 'Вечірній вокзал' біля залізничного вокзалу м. Львів. Затишна домашня кухня, борщ зі сметанкою, фірмовий комплімент 50г від Пані Лесі. Працюємо 24/7.">
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -13,172 +13,322 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="style.css">
 
-    <!-- In-file Layout Fixes (Overriding style.css grid conflicts) -->
     <style>
+        :root {
+            --bg-dark: #0F172A;
+            --bg-card: rgba(30, 41, 59, 0.75);
+            --bg-card-hover: rgba(51, 65, 85, 0.9);
+            --bg-surface: #1E293B;
+            --accent-amber: #F59E0B;
+            --accent-amber-dark: #D97706;
+            --accent-amber-glow: rgba(245, 158, 11, 0.2);
+            --accent-gold: #FBBF24;
+            --accent-green: #10B981;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --text-dim: #64748B;
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --border-amber: rgba(245, 158, 11, 0.35);
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-accent: 'Outfit', sans-serif;
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --shadow-amber: 0 10px 30px -10px rgba(245, 158, 11, 0.4);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
             overflow-x: hidden;
-            font-family: 'Inter', sans-serif;
-            color: #212529;
         }
-        .container {
-            width: 100% !important;
-            max-width: 1200px !important;
-            margin-inline: auto !important;
-            padding-inline: 15px !important;
+
+        /* Typography & General */
+        .font-heading { font-family: var(--font-heading); }
+        .font-accent { font-family: var(--font-accent); }
+        .text-amber { color: var(--accent-amber) !important; }
+        .text-gold { color: var(--accent-gold) !important; }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--accent-amber);
+            font-family: var(--font-accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 0.35rem 0.85rem;
+            background: var(--accent-amber-glow);
+            border-radius: 50px;
+            border: 1px solid var(--border-amber);
         }
-        /* Fix Grid / Row conflicts */
-        .menu-grid, .grid-features, .grid-about, .grid-location, .reviews-grid {
-            display: flex !important;
-            flex-wrap: wrap !important;
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.3rem;
+            font-weight: 700;
         }
-        .menu-card {
-            display: block !important;
-            width: 100% !important;
+
+        /* UI Elements & Buttons */
+        .btn-amber {
+            background: linear-gradient(135deg, var(--accent-amber), var(--accent-amber-dark));
+            color: #0F172A;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            box-shadow: var(--shadow-amber);
+            transition: var(--transition);
         }
-        @media (min-width: 768px) {
-            .menu-card {
-                flex: 0 0 auto !important;
-                width: 50% !important;
-            }
+        .btn-amber:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px -5px rgba(245, 158, 11, 0.6);
+            color: #0F172A;
+            filter: brightness(1.05);
         }
-        @media (min-width: 992px) {
-            .menu-card {
-                flex: 0 0 auto !important;
-                width: 33.33333333% !important;
-            }
-        }
-        .menu-card .card {
-            border-radius: 12px;
-            overflow: hidden;
-            background: #fff;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .menu-card .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
-        }
-        .menu-card-img img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .nav-link {
+
+        .btn-outline-amber {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-glass);
+            border-radius: 50px;
             font-weight: 500;
-            color: #495057;
+            transition: var(--transition);
         }
-        .nav-link:hover, .nav-link.active {
-            color: #0d6efd !important;
+        .btn-outline-amber:hover {
+            border-color: var(--accent-amber);
+            color: var(--accent-amber);
+            background: rgba(245, 158, 11, 0.08);
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+        .glass-card:hover {
+            border-color: var(--border-amber);
+            box-shadow: var(--shadow-glass);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(15, 23, 42, 0.9) !important;
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glass);
+        }
+        .navbar .nav-link {
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .navbar .nav-link:hover, .navbar .nav-link.active {
+            color: var(--accent-amber) !important;
+        }
+
+        /* Status Dot */
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--accent-green);
+            box-shadow: 0 0 10px var(--accent-green);
+            animation: pulseDot 2s infinite;
+            display: inline-block;
+        }
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+        }
+
+        /* Hero */
+        .hero-section {
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
+            padding: 5rem 0;
+        }
+
+        /* Category Tabs */
+        .menu-tab-btn {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .menu-tab-btn.active, .menu-tab-btn:hover {
+            background: var(--accent-amber);
+            color: #0F172A;
+            border-color: var(--accent-amber);
+            font-weight: 600;
+            box-shadow: var(--shadow-amber);
+        }
+
+        /* Menu Card */
+        .menu-card {
+            transition: var(--transition);
+        }
+        .menu-card:hover {
+            transform: translateY(-4px);
+        }
+        .menu-img-wrapper {
+            height: 200px;
+            overflow: hidden;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+        .menu-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .menu-card:hover .menu-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        /* Toast */
+        #customToast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-surface);
+            color: var(--text-main);
+            border: 1px solid var(--accent-amber);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 3000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        #customToast.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Star Rating Form */
+        .star-select i {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .star-select i:hover {
+            transform: scale(1.2);
         }
     </style>
 </head>
 <body>
 
-    <!-- Holiday Warning Banner -->
-    <div class="holiday-banner alert alert-warning alert-dismissible fade show rounded-0 mb-0 py-2" id="holidayBanner" role="alert">
-        <div class="container holiday-content d-flex align-items-center justify-content-between">
+    <!-- Holiday Alert Banner -->
+    <div class="alert alert-warning alert-dismissible fade show rounded-0 mb-0 py-2 border-0 bg-warning text-dark fw-medium" id="holidayBanner" role="alert">
+        <div class="container d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center gap-2">
                 <i class="fa-solid fa-triangle-exclamation"></i>
-                <span><strong>З Днем Незалежності України!</strong> У зв'язку зі святом графік роботи або наявність окремих страв може уточнюватися за телефонуванням.</span>
+                <span><strong>З Днем Незалежності України!</strong> Працюємо у звичному режимі 24/7, наявність окремих страв можна уточнити за телефоном.</span>
             </div>
-            <button class="banner-close-btn btn-close position-static p-2" id="closeBannerBtn" aria-label="Закрити" data-bs-dismiss="alert"></button>
+            <button type="button" class="btn-close shadow-none p-2" data-bs-dismiss="alert" aria-label="Закрити"></button>
         </div>
     </div>
 
-    <!-- Navigation Header -->
-    <header class="navbar navbar-expand-lg sticky-top bg-white border-bottom shadow-sm" id="navbar">
+    <!-- Header / Navigation -->
+    <header class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a href="#" class="brand-logo navbar-brand d-flex align-items-center gap-2 text-decoration-none">
-                <div class="logo-icon fs-3 text-primary">
-                    <i class="fa-solid fa-train"></i>
+            <a href="#" class="navbar-brand d-flex align-items-center gap-3 text-decoration-none">
+                <div class="bg-warning text-dark rounded-3 d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">
+                    <i class="fa-solid fa-train fs-5"></i>
                 </div>
-                <div class="logo-text d-flex flex-column">
-                    <span class="brand-name fw-bold lh-1">Вечірній Вокзал</span>
-                    <small class="brand-sub text-muted">Кафе домашньої кухні</small>
+                <div>
+                    <span class="font-heading fw-bold d-block text-white fs-5 lh-1">Вечірній Вокзал</span>
+                    <small class="text-amber font-accent text-uppercase" style="font-size: 0.7rem; letter-spacing: 1px;">Кафе домашньої кухні</small>
                 </div>
             </a>
 
-            <div class="status-pill open badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2 d-none d-sm-inline-flex align-items-center gap-1" id="liveStatusPill">
-                <span class="status-dot p-1 bg-success rounded-circle"></span>
-                <span class="status-text">Відчинено 24/7</span>
+            <div class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2 d-none d-md-inline-flex align-items-center gap-2">
+                <span class="status-dot"></span>
+                <span>Відчинено 24/7 цілодобово</span>
             </div>
 
-            <button class="navbar-toggler mobile-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" id="mobileToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Меню">
-                <i class="fa-solid fa-bars"></i>
+            <button class="navbar-toggler border-0 text-white shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars fs-4"></i>
             </button>
 
-            <nav class="collapse navbar-collapse nav-menu justify-content-center" id="navMenu">
-                <ul class="navbar-nav gap-lg-2">
+            <nav class="collapse navbar-collapse justify-content-end" id="navMenu">
+                <ul class="navbar-nav align-items-lg-center gap-lg-3 my-3 my-lg-0">
                     <li class="nav-item"><a href="#hero" class="nav-link active">Головна</a></li>
+                    <li class="nav-item"><a href="#features" class="nav-link">Переваги</a></li>
                     <li class="nav-item"><a href="#about" class="nav-link">Про нас</a></li>
                     <li class="nav-item"><a href="#menu" class="nav-link">Меню</a></li>
                     <li class="nav-item"><a href="#reviews" class="nav-link">Відгуки</a></li>
                     <li class="nav-item"><a href="#location" class="nav-link">Контакти</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a href="tel:+380970000000" class="btn btn-amber btn-sm px-3 py-2">
+                            <i class="fa-solid fa-phone me-1"></i> +38 (097) 000-00-00
+                        </a>
+                    </li>
                 </ul>
             </nav>
-
-            <div class="nav-actions d-none d-lg-block">
-                <a href="tel:+380970000000" class="btn btn-secondary btn-sm nav-call-btn" id="callNavBtn">
-                    <i class="fa-solid fa-phone me-1"></i>
-                    <span>Зателефонувати</span>
-                </a>
-            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero py-5" id="hero">
-        <div class="container hero-container">
-            <div class="row align-items-center gy-4">
-                <div class="col-lg-7 hero-content">
-                    <div class="hero-badge badge bg-warning-subtle text-dark border rounded-pill px-3 py-2 mb-3">
-                        <i class="fa-solid fa-location-dot me-1"></i>
-                        <span>2 хвилини від Залізничного Вокзалу м. Львів</span>
+    <section class="hero-section" id="hero">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-7">
+                    <div class="section-tag mb-3">
+                        <i class="fa-solid fa-location-dot me-1"></i> 2 хвилини від Залізничного Вокзалу Львів
                     </div>
-                    <h1 class="hero-title display-5 fw-bold mb-3">Тепло, затишок та домашня кухня <span>цілодобово</span></h1>
-                    <p class="hero-description lead mb-4 text-muted">
-                        Завітайте до нас після дороги або перед потягом! На вас чекають свіжий борщик зі сметанкою, чистота білосніжних скатертин, чудова атмосфера та <strong>фірмовий комплімент 50г</strong> від нашої Пані Лесі.
+                    <h1 class="display-4 fw-bold font-heading mb-3">
+                        Тепло, затишок та домашня кухня <span class="text-amber">цілодобово</span>
+                    </h1>
+                    <p class="lead text-muted mb-4">
+                        Завітайте після далекої дороги або перед відправленням потяга! На вас чекають наваристий борщик зі сметанкою, чистота білих скатертин та <strong>фірмовий комплімент 50г</strong> від Пані Лесі.
                     </p>
-                    <div class="hero-rating-strip d-flex align-items-center gap-2 mb-4">
-                        <div class="rating-stars text-warning">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <i class="fa-regular fa-star"></i>
+                    <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
+                        <div class="text-gold fs-5">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>
                         </div>
-                        <span class="rating-score fw-bold">3.3 / 5.0</span>
-                        <span class="rating-count text-muted">(29+ відгуків на Google Maps)</span>
+                        <span class="fw-bold fs-5 text-white">3.3 / 5.0</span>
+                        <span class="text-muted small">(29+ відгуків на Google Maps)</span>
                     </div>
-                    <div class="hero-buttons d-flex flex-wrap gap-2">
-                        <a href="#menu" class="btn btn-primary btn-lg">
-                            <i class="fa-solid fa-utensils me-2"></i>Переглянути Меню
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#menu" class="btn btn-amber btn-lg px-4 py-3">
+                            <i class="fa-solid fa-utensils me-2"></i>Переглянути меню
                         </a>
-                        <a href="#location" class="btn btn-outline-secondary btn-lg">
-                            <i class="fa-solid fa-route me-2"></i>Прокласти маршрут
+                        <a href="#location" class="btn btn-outline-amber btn-lg px-4 py-3">
+                            <i class="fa-solid fa-route me-2"></i>Як дістатися
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-5 hero-card-preview">
-                    <div class="card shadow p-3 border-0 rounded-4">
-                        <div class="feature-header d-flex align-items-center gap-3 mb-3">
-                            <div class="feature-icon-box fs-2 text-warning">
-                                <i class="fa-solid fa-wine-glass-sparkles"></i>
+
+                <div class="col-lg-5">
+                    <div class="glass-card p-3 border-amber position-relative">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="text-amber fs-2">
+                                <i class="fa-solid fa-gift"></i>
                             </div>
                             <div>
-                                <h4 class="h5 mb-1">Подарунок для кожного гостя!</h4>
-                                <p class="small text-muted mb-0">Комплімент від закладу — 50г та канапка від Пані Лесі</p>
+                                <h4 class="h5 mb-0 text-white font-heading">Подарунок кожному гостю</h4>
+                                <small class="text-muted">Фірмові 50г та канапка від Пані Лесі</small>
                             </div>
                         </div>
-                        <div class="hero-card-img position-relative overflow-hidden rounded">
-                            <img src="assets/images/borscht.png" alt="Борщ із сметаною" class="img-fluid w-100 rounded" loading="lazy" style="height: 220px; object-fit: cover;">
-                            <div class="img-badge badge bg-danger position-absolute top-0 start-0 m-2">Свіже щодня</div>
+                        <div class="rounded-3 overflow-hidden position-relative" style="height: 240px;">
+                            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=800&auto=format&fit=crop" alt="Український борщ" class="w-100 h-100 object-fit-cover">
+                            <span class="badge bg-danger position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Гаряче & Свіже</span>
                         </div>
                     </div>
                 </div>
@@ -187,43 +337,35 @@
     </section>
 
     <!-- Key Highlights / Features -->
-    <section class="features-section py-5 bg-light">
+    <section class="py-5" id="features">
         <div class="container">
             <div class="row g-4">
-                <div class="col-sm-6 col-lg-3">
-                    <div class="feature-box card h-100 p-4 border-0 shadow-sm text-center">
-                        <div class="feature-icon fs-2 text-primary mb-3">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
-                        <h3 class="h5">Відчинено 24/7</h3>
-                        <p class="text-muted small mb-0">Працюємо цілодобово без перерв та вихідних. Гаряча поживна їжа о будь-якій порі ночі.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card p-4 text-center h-100">
+                        <div class="text-amber fs-1 mb-3"><i class="fa-solid fa-clock"></i></div>
+                        <h3 class="h5 font-accent text-white">Працюємо 24/7</h3>
+                        <p class="text-muted small mb-0">Без вихідних та перерв. Гаряча поживна їжа навіть серед ночі.</p>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="feature-box card h-100 p-4 border-0 shadow-sm text-center">
-                        <div class="feature-icon fs-2 text-danger mb-3">
-                            <i class="fa-solid fa-bowl-hot"></i>
-                        </div>
-                        <h3 class="h5">Справжня домашня кухня</h3>
-                        <p class="text-muted small mb-0">Борщик із сметанкою, пампушки, деруни, котлети — усе як удома, а не сухий фаст-фуд.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card p-4 text-center h-100">
+                        <div class="text-amber fs-1 mb-3"><i class="fa-solid fa-bowl-food"></i></div>
+                        <h3 class="h5 font-accent text-white">Домашні рецепти</h3>
+                        <p class="text-muted small mb-0">Борщ, вареники, котлети по-київськи та пампушки — справжній смак дому.</p>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="feature-box card h-100 p-4 border-0 shadow-sm text-center">
-                        <div class="feature-icon fs-2 text-warning mb-3">
-                            <i class="fa-solid fa-sparkles"></i>
-                        </div>
-                        <h3 class="h5">Ідеальна чистота</h3>
-                        <p class="text-muted small mb-0">Бездоганні білі скатертини, чистота посуду та атмосферне обслуговування від Пані Лесі.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card p-4 text-center h-100">
+                        <div class="text-amber fs-1 mb-3"><i class="fa-solid fa-sparkles"></i></div>
+                        <h3 class="h5 font-accent text-white">Чистота й затишок</h3>
+                        <p class="text-muted small mb-0">Білосніжні скатертини, чистота кожного куточка та щира львівська турбота.</p>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="feature-box card h-100 p-4 border-0 shadow-sm text-center">
-                        <div class="feature-icon fs-2 text-success mb-3">
-                            <i class="fa-solid fa-wallet"></i>
-                        </div>
-                        <h3 class="h5">Доступні ціни біля ж/д</h3>
-                        <p class="text-muted small mb-0">Найвигідніший варіант смачно та ситно поїсти безпосередньо біля залізничного вокзалу.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card p-4 text-center h-100">
+                        <div class="text-amber fs-1 mb-3"><i class="fa-solid fa-wallet"></i></div>
+                        <h3 class="h5 font-accent text-white">Чесні ціни</h3>
+                        <p class="text-muted small mb-0">Найкраще співвідношення ситної їжі та приємної вартості біля самого вокзалу.</p>
                     </div>
                 </div>
             </div>
@@ -231,43 +373,38 @@
     </section>
 
     <!-- About Section -->
-    <section class="about-section py-5" id="about">
+    <section class="py-5" id="about">
         <div class="container">
             <div class="row align-items-center gy-4">
-                <div class="col-lg-6 about-gallery">
+                <div class="col-lg-6">
                     <div class="row g-3">
-                        <div class="col-8 about-img-main">
-                            <img src="assets/images/interior.png" alt="Інтер'єр кафе Вечірній вокзал" class="img-fluid rounded shadow" loading="lazy">
+                        <div class="col-8">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" alt="Інтер'єр кафе" class="img-fluid rounded-4 shadow border border-secondary">
                         </div>
-                        <div class="col-4 about-img-sub">
-                            <img src="assets/images/hero.png" alt="Атмосфера кафе" class="img-fluid rounded shadow h-100 object-fit-cover" loading="lazy">
+                        <div class="col-4">
+                            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=800&auto=format&fit=crop" alt="Деталі інтер'єру" class="img-fluid rounded-4 shadow h-100 object-fit-cover border border-secondary">
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 about-content">
-                    <div class="section-tag badge bg-primary-subtle text-primary mb-2">Про наше кафе</div>
-                    <h2 class="section-title fw-bold mb-3">Місце, де турбуються про комфорт кожного гостя</h2>
-                    <p class="section-desc text-muted mb-4">
-                        Завітавши до кафе <strong>"Вечірній вокзал"</strong>, ви потрапляєте в атмосферу щирого львівського затишку. Наш заклад знаходиться в кількох кроках від головного вокзалу, щоб ви могли відпочити з дороги, швидко перекусити справжньою гарячою їжею або зігрітися духмяним чаєм.
+                <div class="col-lg-6">
+                    <div class="section-tag mb-2">Про заклад</div>
+                    <h2 class="section-title text-white mb-3">Турбота про кожного мандрівника</h2>
+                    <p class="text-muted mb-4">
+                        Кафе <strong>"Вечірній вокзал"</strong> — це привітна гавань біля головних залізничних воріт Львова. Тут можна зняти втому дороги, скуштувати справжнього гарячого борщу та комфортно перепочити з багажем у теплій атмосфері.
                     </p>
-                    <div class="about-bullets d-flex flex-column gap-2 mb-4">
-                        <div class="bullet-item d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-check-circle text-success"></i>
-                            <span>Традиційні рецепти української та домашньої кухні</span>
+                    <div class="d-flex flex-column gap-3 mb-4">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-amber fs-5"></i>
+                            <span class="text-white">Швидка подача свіжих гарячих страв</span>
                         </div>
-                        <div class="bullet-item d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-check-circle text-success"></i>
-                            <span>Привітні господині та легендарний сервіс від Пані Лесі</span>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-amber fs-5"></i>
+                            <span class="text-white">Привітний персонал і легендарна Пані Леся</span>
                         </div>
-                        <div class="bullet-item d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-check-circle text-success"></i>
-                            <span>Безкоштовний Wi-Fi та зручні місця для відпочинку з багажем</span>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-amber fs-5"></i>
+                            <span class="text-white">Швидкісний Wi-Fi та розетки для підзарядки ґаджетів</span>
                         </div>
-                    </div>
-                    <div class="quote-box p-3 bg-light rounded border-start border-4 border-warning">
-                        <i class="fa-solid fa-quote-left quote-icon fs-4 text-warning mb-2 d-block"></i>
-                        <p class="fst-italic mb-1">"Неймовірно затишне місце! Відчув себе як вдома. Борщик — неймовірний, горілочка — смачнюща, ще й комплімент отримали."</p>
-                        <span class="quote-author small fw-bold text-muted">— З відгуку постійного гостя</span>
                     </div>
                 </div>
             </div>
@@ -275,162 +412,117 @@
     </section>
 
     <!-- Menu Section -->
-    <section class="menu-section py-5 bg-light" id="menu">
+    <section class="py-5" id="menu" style="background: rgba(15, 23, 42, 0.5);">
         <div class="container">
-            <div class="section-header text-center mb-4">
-                <div class="section-tag badge bg-primary-subtle text-primary mb-2">Наше Меню</div>
-                <h2 class="section-title fw-bold">Свіжі страви кожної години</h2>
-                <p class="section-desc text-muted">Повноцінний обід або легкий перекус — обирайте страви до смаку</p>
+            <div class="text-center mb-5">
+                <div class="section-tag mb-2">Меню кафе</div>
+                <h2 class="section-title text-white">Домашні страви кожної години</h2>
+                <p class="text-muted">Смачно, ситно та швидко — оберіть те, що до душі</p>
+                
+                <!-- Filter Tabs -->
+                <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                    <button class="menu-tab-btn active" data-category="all">Усі позиції</button>
+                    <button class="menu-tab-btn" data-category="soups">Перші страви</button>
+                    <button class="menu-tab-btn" data-category="mains">Основні страви</button>
+                    <button class="menu-tab-btn" data-category="compliments">Напої & Подарунки</button>
+                </div>
             </div>
 
-            <!-- Menu Category Tabs -->
-            <div class="menu-tabs d-flex flex-wrap justify-content-center gap-2 mb-5">
-                <button class="tab-btn btn btn-outline-primary active" data-category="all">Усі страви</button>
-                <button class="tab-btn btn btn-outline-primary" data-category="soups">Борщі та Перші страви</button>
-                <button class="tab-btn btn btn-outline-primary" data-category="mains">Основні страви</button>
-                <button class="tab-btn btn btn-outline-primary" data-category="compliments">Напої & Компліменти</button>
-                <button class="tab-btn btn btn-outline-primary" data-category="desserts">Салати & Десерти</button>
-            </div>
-
-            <!-- Menu Grid Container -->
-            <div class="menu-grid row g-4" id="menuGrid">
-                <!-- Item 1 -->
-                <div class="col-md-6 col-lg-4 menu-card" data-category="soups">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="menu-card-img position-relative">
-                            <img src="assets/images/borscht.png" alt="Борщ український" class="card-img-top">
-                            <span class="card-badge tag-hit badge bg-danger position-absolute top-0 end-0 m-2">Хіт продажів</span>
+            <!-- Menu Grid -->
+            <div class="row g-4" id="menuContainer">
+                <!-- Dish 1 -->
+                <div class="col-md-6 col-lg-4 menu-item" data-category="soups">
+                    <div class="glass-card menu-card h-100 d-flex flex-column">
+                        <div class="menu-img-wrapper position-relative">
+                            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=800&auto=format&fit=crop" alt="Борщ">
+                            <span class="badge bg-danger position-absolute top-0 end-0 m-3">Хіт</span>
                         </div>
-                        <div class="menu-card-body card-body d-flex flex-column">
-                            <div class="menu-card-title d-flex justify-content-between align-items-center mb-2">
-                                <h3 class="h5 mb-0">Борщ Український із сметанкою</h3>
-                                <span class="menu-price badge bg-primary fs-6">85 ₴</span>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h3 class="h5 text-white mb-0 font-accent">Борщ український</h3>
+                                <span class="text-amber fw-bold fs-5">85 ₴</span>
                             </div>
-                            <p class="menu-desc small text-muted flex-grow-1">Насичений наваристий борщ за старовинним рецептом із духмяною сметаною та свіжою зеленню.</p>
-                            <div class="menu-footer d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                                <span class="portion-size text-muted small"><i class="fa-solid fa-weight-hanging"></i> 350г</span>
-                                <button class="btn-order-item btn btn-sm btn-primary" onclick="orderItem('Борщ Український')">Замовити</button>
+                            <p class="text-muted small flex-grow-1">Наваристий борщ зі сметанкою, зеленню та традиційним набором свіжих овочів.</p>
+                            <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
+                                <span class="text-dim small"><i class="fa-solid fa-weight-hanging me-1"></i>350 г</span>
+                                <button class="btn btn-outline-amber btn-sm" onclick="orderItem('Борщ український')">Замовити</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="col-md-6 col-lg-4 menu-card" data-category="soups">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="menu-card-body standalone card-body d-flex flex-column">
-                            <div class="menu-card-title d-flex justify-content-between align-items-center mb-2">
-                                <h3 class="h5 mb-0">Пампушки з часником (3 шт)</h3>
-                                <span class="menu-price badge bg-primary fs-6">25 ₴</span>
-                            </div>
-                            <p class="menu-desc small text-muted flex-grow-1">М'які пухкі пампушки, змащені часниковим соусом та кропом. Ідеально до борщу.</p>
-                            <div class="menu-footer d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                                <span class="portion-size text-muted small"><i class="fa-solid fa-weight-hanging"></i> 100г</span>
-                                <button class="btn-order-item btn btn-sm btn-primary" onclick="orderItem('Пампушки з часником')">Замовити</button>
-                            </div>
+                <!-- Dish 2 -->
+                <div class="col-md-6 col-lg-4 menu-item" data-category="soups">
+                    <div class="glass-card menu-card h-100 d-flex flex-column p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h3 class="h5 text-white mb-0 font-accent">Пампушки з часником</h3>
+                            <span class="text-amber fw-bold fs-5">25 ₴</span>
+                        </div>
+                        <p class="text-muted small flex-grow-1">Пухкі свіжоспечені булочки (3 шт), щедро змащені часниковим соусом та зеленню.</p>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
+                            <span class="text-dim small"><i class="fa-solid fa-weight-hanging me-1"></i>100 г</span>
+                            <button class="btn btn-outline-amber btn-sm" onclick="orderItem('Пампушки з часником')">Замовити</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="col-md-6 col-lg-4 menu-card" data-category="compliments">
-                    <div class="card h-100 shadow-sm border-warning">
-                        <div class="menu-card-body standalone gift-card card-body bg-warning-subtle d-flex flex-column">
-                            <span class="card-badge tag-gift badge bg-warning text-dark mb-2 align-self-start">Подарунок 🎁</span>
-                            <div class="menu-card-title d-flex justify-content-between align-items-center mb-2">
-                                <h3 class="h5 mb-0">Комплімент від Пані Лесі</h3>
-                                <span class="menu-price free badge bg-success fs-6">0 ₴</span>
-                            </div>
-                            <p class="menu-desc small text-muted flex-grow-1">50г фірмової чарки та канапка з духмяним салом і солоним огірочком для кожного гостя закладу!</p>
-                            <div class="menu-footer d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-warning-subtle">
-                                <span class="portion-size text-muted small"><i class="fa-solid fa-gift"></i> Безкоштовно</span>
-                                <button class="btn-order-item gift-btn btn btn-sm btn-warning" onclick="orderItem('Комплімент від Пані Лесі')">Отримати</button>
-                            </div>
+                <!-- Dish 3 (Gift) -->
+                <div class="col-md-6 col-lg-4 menu-item" data-category="compliments">
+                    <div class="glass-card menu-card h-100 d-flex flex-column p-4 border-amber" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(30, 41, 59, 0.8));">
+                        <span class="badge bg-warning text-dark align-self-start mb-2">🎁 Подарунок гостю</span>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h3 class="h5 text-white mb-0 font-accent">Комплімент від Пані Лесі</h3>
+                            <span class="text-success fw-bold fs-5">0 ₴</span>
+                        </div>
+                        <p class="text-muted small flex-grow-1">50г фірмової наливки та канапка з духмяним салом і солоним огірочком для кожного відвідувача!</p>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
+                            <span class="text-success small"><i class="fa-solid fa-gift me-1"></i>Безкоштовно</span>
+                            <button class="btn btn-amber btn-sm" onclick="orderItem('Комплімент від Пані Лесі')">Отримати</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="col-md-6 col-lg-4 menu-card" data-category="mains">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="menu-card-body standalone card-body d-flex flex-column">
-                            <div class="menu-card-title d-flex justify-content-between align-items-center mb-2">
-                                <h3 class="h5 mb-0">Вареники з картоплею</h3>
-                                <span class="menu-price badge bg-primary fs-6">75 ₴</span>
-                            </div>
-                            <p class="menu-desc small text-muted flex-grow-1">Домашні ліплені вареники з ніжним картопляним пюре, золотавою цибулькою та шкварками.</p>
-                            <div class="menu-footer d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                                <span class="portion-size text-muted small"><i class="fa-solid fa-weight-hanging"></i> 250г</span>
-                                <button class="btn-order-item btn btn-sm btn-primary" onclick="orderItem('Вареники з картоплею')">Замовити</button>
-                            </div>
+                <!-- Dish 4 -->
+                <div class="col-md-6 col-lg-4 menu-item" data-category="mains">
+                    <div class="glass-card menu-card h-100 d-flex flex-column p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h3 class="h5 text-white mb-0 font-accent">Вареники з картоплею</h3>
+                            <span class="text-amber fw-bold fs-5">75 ₴</span>
+                        </div>
+                        <p class="text-muted small flex-grow-1">Домашні вареники ручної ліпки з ніжним картопляним пюре, золотистою цибулькою та шкварками.</p>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
+                            <span class="text-dim small"><i class="fa-solid fa-weight-hanging me-1"></i>250 г</span>
+                            <button class="btn btn-outline-amber btn-sm" onclick="orderItem('Вареники з картоплею')">Замовити</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 5 -->
-                <div class="col-md-6 col-lg-4 menu-card" data-category="mains">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="menu-card-body standalone card-body d-flex flex-column">
-                            <div class="menu-card-title d-flex justify-content-between align-items-center mb-2">
-                                <h3 class="h5 mb-0">Котлета по-київськи</h3>
-                                <span class="menu-price badge bg-primary fs-6">110 ₴</span>
-                            </div>
-                            <p class="menu-desc small text-muted flex-grow-1">Соковита куряча котлета з вершковим маслом у хрусткій паніровці, подається з гарячим картопляним пюре.</p>
-                            <div class="menu-footer d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                                <span class="portion-size text-muted small"><i class="fa-solid fa-weight-hanging"></i> 300г</span>
-                                <button class="btn-order-item btn btn-sm btn-primary" onclick="orderItem('Котлета по-київськи')">Замовити</button>
-                            </div>
+                <!-- Dish 5 -->
+                <div class="col-md-6 col-lg-4 menu-item" data-category="mains">
+                    <div class="glass-card menu-card h-100 d-flex flex-column p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h3 class="h5 text-white mb-0 font-accent">Котлета по-київськи</h3>
+                            <span class="text-amber fw-bold fs-5">110 ₴</span>
+                        </div>
+                        <p class="text-muted small flex-grow-1">Соковите куряче філе з вершковим маслом у хрусткій золотавій паніровці. Подається з пюре.</p>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
+                            <span class="text-dim small"><i class="fa-solid fa-weight-hanging me-1"></i>300 г</span>
+                            <button class="btn btn-outline-amber btn-sm" onclick="orderItem('Котлета по-київськи')">Замовити</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 6 -->
-                <div class="col-md-6 col-lg-4 menu-card" data-category="mains">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="menu-card-body standalone card-body d-flex flex-column">
-                            <div class="menu-card-title d-flex justify-content-between align-items-center mb-2">
-                                <h3 class="h5 mb-0">Деруни картопляні</h3>
-                                <span class="menu-price badge bg-primary fs-6">80 ₴</span>
-                            </div>
-                            <p class="menu-desc small text-muted flex-grow-1">Золотисті хрусткі деруни з тертої картоплі, змащені домашньою сметаною.</p>
-                            <div class="menu-footer d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                                <span class="portion-size text-muted small"><i class="fa-solid fa-weight-hanging"></i> 220г</span>
-                                <button class="btn-order-item btn btn-sm btn-primary" onclick="orderItem('Деруни картопляні')">Замовити</button>
-                            </div>
+                <!-- Dish 6 -->
+                <div class="col-md-6 col-lg-4 menu-item" data-category="mains">
+                    <div class="glass-card menu-card h-100 d-flex flex-column p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h3 class="h5 text-white mb-0 font-accent">Деруни зі сметаною</h3>
+                            <span class="text-amber fw-bold fs-5">80 ₴</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Item 7 -->
-                <div class="col-md-6 col-lg-4 menu-card" data-category="compliments">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="menu-card-body standalone card-body d-flex flex-column">
-                            <div class="menu-card-title d-flex justify-content-between align-items-center mb-2">
-                                <h3 class="h5 mb-0">Чай / Духмяна кава</h3>
-                                <span class="menu-price badge bg-primary fs-6">30 ₴</span>
-                            </div>
-                            <p class="menu-desc small text-muted flex-grow-1">Гарячий трав'яний чай або натуральна свіжозварена кава для відновлення сил перед поїздкою.</p>
-                            <div class="menu-footer d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                                <span class="portion-size text-muted small"><i class="fa-solid fa-mug-hot"></i> 250мл</span>
-                                <button class="btn-order-item btn btn-sm btn-primary" onclick="orderItem('Гарячий чай / Кава')">Замовити</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 8 -->
-                <div class="col-md-6 col-lg-4 menu-card" data-category="desserts">
-                    <div class="card h-100 shadow-sm border-0">
-                        <div class="menu-card-body standalone card-body d-flex flex-column">
-                            <div class="menu-card-title d-flex justify-content-between align-items-center mb-2">
-                                <h3 class="h5 mb-0">Салат "Свіжість"</h3>
-                                <span class="menu-price badge bg-primary fs-6">65 ₴</span>
-                            </div>
-                            <p class="menu-desc small text-muted flex-grow-1">Свіжі огірки, томати, болгарський перець, зелень, заправлені соняшниковою олією або сметаною.</p>
-                            <div class="menu-footer d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                                <span class="portion-size text-muted small"><i class="fa-solid fa-weight-hanging"></i> 180г</span>
-                                <button class="btn-order-item btn btn-sm btn-primary" onclick="orderItem('Салат Свіжість')">Замовити</button>
-                            </div>
+                        <p class="text-muted small flex-grow-1">Хрусткі картопляні оладки за традиційним рецептом із густою домашньою сметанкою.</p>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
+                            <span class="text-dim small"><i class="fa-solid fa-weight-hanging me-1"></i>220 г</span>
+                            <button class="btn btn-outline-amber btn-sm" onclick="orderItem('Деруни')">Замовити</button>
                         </div>
                     </div>
                 </div>
@@ -439,179 +531,149 @@
     </section>
 
     <!-- Reviews Section -->
-    <section class="reviews-section py-5" id="reviews">
+    <section class="py-5" id="reviews">
         <div class="container">
-            <div class="section-header text-center mb-4">
-                <div class="section-tag badge bg-primary-subtle text-primary mb-2">Google Відгуки</div>
-                <h2 class="section-title fw-bold">Що про нас кажуть гості</h2>
-                <p class="section-desc text-muted">Реальні відгуки мандрівників та львів'ян</p>
+            <div class="text-center mb-4">
+                <div class="section-tag mb-2">Google Відгуки</div>
+                <h2 class="section-title text-white">Враження наших гостей</h2>
             </div>
 
-            <!-- Reviews Score Summary Header -->
-            <div class="reviews-summary-card card p-4 mb-4 shadow-sm border-0">
-                <div class="row align-items-center gy-3">
-                    <div class="col-md-4 text-center summary-score-box">
-                        <span class="big-score display-4 fw-bold" id="avgScoreDisplay">3.3</span>
-                        <div class="stars-gold text-warning fs-5 my-1">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <i class="fa-regular fa-star"></i>
+            <div class="glass-card p-4 mb-4">
+                <div class="row align-items-center gy-3 text-center text-md-start">
+                    <div class="col-md-4 text-center border-end-md border-secondary">
+                        <span class="display-3 fw-bold text-amber font-heading" id="avgScoreDisplay">3.3</span>
+                        <div class="text-gold fs-5 my-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>
                         </div>
-                        <span class="summary-total text-muted small d-block" id="totalReviewsDisplay">Загалом 29 відгуків</span>
+                        <span class="text-muted small d-block" id="totalReviewsDisplay">Загалом 29 відгуків</span>
                     </div>
-                    <div class="col-md-5 summary-bars">
-                        <div class="bar-row d-flex align-items-center gap-2 mb-1">
-                            <span class="small" style="width: 30px;">5 ★</span>
-                            <div class="progress flex-grow-1" style="height: 8px;"><div class="fill progress-bar bg-warning" style="width: 45%;"></div></div>
+                    <div class="col-md-5">
+                        <div class="d-flex align-items-center gap-2 mb-1 text-muted small">
+                            <span>5 ★</span>
+                            <div class="progress flex-grow-1" style="height: 6px;"><div class="progress-bar bg-warning" style="width: 45%;"></div></div>
                         </div>
-                        <div class="bar-row d-flex align-items-center gap-2 mb-1">
-                            <span class="small" style="width: 30px;">4 ★</span>
-                            <div class="progress flex-grow-1" style="height: 8px;"><div class="fill progress-bar bg-warning" style="width: 20%;"></div></div>
+                        <div class="d-flex align-items-center gap-2 mb-1 text-muted small">
+                            <span>4 ★</span>
+                            <div class="progress flex-grow-1" style="height: 6px;"><div class="progress-bar bg-warning" style="width: 20%;"></div></div>
                         </div>
-                        <div class="bar-row d-flex align-items-center gap-2 mb-1">
-                            <span class="small" style="width: 30px;">3 ★</span>
-                            <div class="progress flex-grow-1" style="height: 8px;"><div class="fill progress-bar bg-warning" style="width: 15%;"></div></div>
+                        <div class="d-flex align-items-center gap-2 mb-1 text-muted small">
+                            <span>3 ★</span>
+                            <div class="progress flex-grow-1" style="height: 6px;"><div class="progress-bar bg-warning" style="width: 15%;"></div></div>
                         </div>
-                        <div class="bar-row d-flex align-items-center gap-2 mb-1">
-                            <span class="small" style="width: 30px;">2 ★</span>
-                            <div class="progress flex-grow-1" style="height: 8px;"><div class="fill progress-bar bg-warning" style="width: 10%;"></div></div>
+                        <div class="d-flex align-items-center gap-2 mb-1 text-muted small">
+                            <span>2 ★</span>
+                            <div class="progress flex-grow-1" style="height: 6px;"><div class="progress-bar bg-warning" style="width: 10%;"></div></div>
                         </div>
-                        <div class="bar-row d-flex align-items-center gap-2">
-                            <span class="small" style="width: 30px;">1 ★</span>
-                            <div class="progress flex-grow-1" style="height: 8px;"><div class="fill progress-bar bg-warning" style="width: 10%;"></div></div>
+                        <div class="d-flex align-items-center gap-2 text-muted small">
+                            <span>1 ★</span>
+                            <div class="progress flex-grow-1" style="height: 6px;"><div class="progress-bar bg-warning" style="width: 10%;"></div></div>
                         </div>
                     </div>
-                    <div class="col-md-3 text-center summary-action">
-                        <button class="btn btn-primary" id="openReviewModalBtn">
-                            <i class="fa-solid fa-pen-to-square me-1"></i>Додати свій відгук
+                    <div class="col-md-3 text-center">
+                        <button class="btn btn-amber" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                            <i class="fa-solid fa-pen me-2"></i>Залишити відгук
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Reviews Grid Showcase -->
-            <div class="reviews-grid row g-4" id="reviewsGrid">
-                <!-- Review 1 -->
+            <!-- Review Cards Grid -->
+            <div class="row g-4" id="reviewsGrid">
                 <div class="col-md-4">
-                    <div class="review-card card h-100 p-3 shadow-sm border-0">
-                        <div class="review-header d-flex align-items-center gap-3 mb-2">
-                            <div class="avatar-circle badge bg-secondary rounded-circle p-2">ОЛ</div>
-                            <div class="flex-grow-1">
-                                <h4 class="reviewer-name h6 mb-0">Олексій М.</h4>
-                                <span class="review-date text-muted small">3 роки тому</span>
+                    <div class="glass-card p-4 h-100 d-flex flex-column">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-circle bg-primary text-white fw-bold d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">ОМ</div>
+                            <div>
+                                <h4 class="h6 text-white mb-0">Олексій М.</h4>
+                                <small class="text-dim">Нещодавно</small>
                             </div>
-                            <div class="review-rating text-warning small">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
+                            <div class="ms-auto text-gold small"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                         </div>
-                        <p class="review-text small text-muted">"Це недорогий варіант поїсти біля вокзалу. Страви як в столовій, атмосфера така ж сама. Швидко перекусити звичайною їжею, а не печивом, круасанами чи фаст-фудом. Все свіже!"</p>
-                        <div class="review-chip badge bg-light text-secondary align-self-start mt-auto">📍 Поїздка / Перекус біля ж/д</div>
+                        <p class="text-muted small fst-italic flex-grow-1">"Недорогий і перевірений варіант поїсти біля вокзалу. Швидко, гаряче, порції ситні. Борщ відмінний!"</p>
+                        <span class="badge bg-secondary-subtle text-secondary align-self-start">📍 Перекус біля потяга</span>
                     </div>
                 </div>
 
-                <!-- Review 2 -->
                 <div class="col-md-4">
-                    <div class="review-card card h-100 p-3 shadow-sm border-0">
-                        <div class="review-header d-flex align-items-center gap-3 mb-2">
-                            <div class="avatar-circle avatar-alt badge bg-info rounded-circle p-2">ВБ</div>
-                            <div class="flex-grow-1">
-                                <h4 class="reviewer-name h6 mb-0">Вадим & Товариш</h4>
-                                <span class="review-date text-muted small">10 місяців тому</span>
+                    <div class="glass-card p-4 h-100 d-flex flex-column">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-circle bg-info text-dark fw-bold d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">ВБ</div>
+                            <div>
+                                <h4 class="h6 text-white mb-0">Вадим</h4>
+                                <small class="text-dim">10 місяців тому</small>
                             </div>
-                            <div class="review-rating text-warning small">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
+                            <div class="ms-auto text-gold small"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                         </div>
-                        <p class="review-text small text-muted">"Побував тут з товаришем. Хотів відмітити чистоту скатертини, якість та швидкість обслуговування. Замовив борщик, все як люблю, зі сметанкою, без м'яса. Дуже смачно!"</p>
-                        <div class="review-chip badge bg-light text-secondary align-self-start mt-auto">🥣 Борщ зі сметанкою</div>
+                        <p class="text-muted small fst-italic flex-grow-1">"Відмічу чисті білі скатертини та швидкість обслуговування. Борщик зі сметанкою — саме те, що треба з дороги!"</p>
+                        <span class="badge bg-secondary-subtle text-secondary align-self-start">🥣 Борщ зі сметанкою</span>
                     </div>
                 </div>
 
-                <!-- Review 3 -->
                 <div class="col-md-4">
-                    <div class="review-card highlight-card card h-100 p-3 shadow-sm border-warning bg-warning-subtle">
-                        <div class="review-header d-flex align-items-center gap-3 mb-2">
-                            <div class="avatar-circle avatar-gold badge bg-warning text-dark rounded-circle p-2">ПЛ</div>
-                            <div class="flex-grow-1">
-                                <h4 class="reviewer-name h6 mb-0">Ігор Т.</h4>
-                                <span class="review-date text-muted small">10 місяців тому</span>
+                    <div class="glass-card p-4 h-100 d-flex flex-column border-amber" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(30, 41, 59, 0.8));">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-circle bg-warning text-dark fw-bold d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">ІТ</div>
+                            <div>
+                                <h4 class="h6 text-white mb-0">Ігор Т.</h4>
+                                <small class="text-dim">10 місяців тому</small>
                             </div>
-                            <div class="review-rating text-warning small">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
+                            <div class="ms-auto text-gold small"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                         </div>
-                        <p class="review-text small">"Неймовірно затишне місце, де турбуються про комфорт гостей. Пані Леся - чарівниця! Відчув себе як вдома. Борщик - неймовірний, горілочка - смачнюща, ще й комплімент від закладу отримали в вигляді подарункових 50 грам. Посуд, інтер’єр... 10/10!"</p>
-                        <div class="review-chip gold-chip badge bg-warning text-dark align-self-start mt-auto">✨ Комплімент 50г & Пані Леся</div>
+                        <p class="text-white small fst-italic flex-grow-1">"Пані Леся — неймовірна господиня! Відчули себе як удома. Отримали подарункові 50 грам компліменту. 10 із 10!"</p>
+                        <span class="badge bg-warning text-dark align-self-start">✨ Комплімент & Пані Леся</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Location & Directions Section -->
-    <section class="location-section py-5 bg-light" id="location">
+    <!-- Location / Contacts Section -->
+    <section class="py-5" id="location" style="background: rgba(15, 23, 42, 0.5);">
         <div class="container">
             <div class="row align-items-center gy-4">
-                <div class="col-lg-6 location-info">
-                    <div class="section-tag badge bg-primary-subtle text-primary mb-2">Локація та Графік</div>
-                    <h2 class="section-title fw-bold mb-3">Як нас знайти біля вокзалу</h2>
-                    <p class="section-desc text-muted mb-4">Ми знаходимося безпосередньо біля виходу з Головного Залізничного Вокзалу м. Львів.</p>
+                <div class="col-lg-6">
+                    <div class="section-tag mb-2">Локація</div>
+                    <h2 class="section-title text-white mb-4">Як нас знайти</h2>
                     
-                    <div class="info-list d-flex flex-column gap-3 mb-4">
-                        <div class="info-item d-flex align-items-start gap-3">
-                            <div class="info-icon fs-4 text-primary"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="d-flex flex-column gap-4 mb-4">
+                        <div class="d-flex gap-3">
+                            <div class="text-amber fs-4"><i class="fa-solid fa-location-dot"></i></div>
                             <div>
-                                <h4 class="h6 mb-1">Адреса</h4>
-                                <p class="small text-muted mb-0">м. Львів, пл. Двірцева (біля Залізничного Вокзалу)</p>
+                                <h3 class="h6 text-white mb-1">Адреса</h3>
+                                <p class="text-muted small mb-0">м. Львів, площа Двірцева (біля Головного Залізничного Вокзалу)</p>
                             </div>
                         </div>
-                        <div class="info-item d-flex align-items-start gap-3">
-                            <div class="info-icon fs-4 text-primary"><i class="fa-solid fa-clock"></i></div>
-                            <div>
-                                <h4 class="h6 mb-1">Графік роботи</h4>
-                                <p class="small text-muted mb-0"><strong>Відчинено цілодобово (24/7)</strong><br><small class="text-warning">* Графік може коригуватися у святкові дні</small></p>
-                            </div>
-                        </div>
-                        <div class="info-item d-flex align-items-start gap-3">
-                            <div class="info-icon fs-4 text-primary"><i class="fa-solid fa-phone"></i></div>
-                            <div>
-                                <h4 class="h6 mb-1">Телефон для довідок та замовлень</h4>
-                                <p class="small mb-0"><a href="tel:+380970000000" class="phone-link text-decoration-none fw-bold">+38 (097) 000-00-00</a></p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="nearby-places">
-                        <h4 class="h6 mb-2">Поруч із нами:</h4>
-                        <div class="tags-cloud d-flex flex-wrap gap-2">
-                            <span class="place-tag badge bg-white text-dark border p-2"><i class="fa-solid fa-train me-1"></i> Львів ж/д (2 хв)</span>
-                            <span class="place-tag badge bg-white text-dark border p-2"><i class="fa-solid fa-utensils me-1"></i> Дорога Смаку</span>
-                            <span class="place-tag badge bg-white text-dark border p-2"><i class="fa-solid fa-building-columns me-1"></i> Stare Misto</span>
-                            <span class="place-tag badge bg-white text-dark border p-2"><i class="fa-solid fa-ice-cream me-1"></i> Файні Льоди</span>
+                        <div class="d-flex gap-3">
+                            <div class="text-amber fs-4"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h3 class="h6 text-white mb-1">Графік роботи</h3>
+                                <p class="text-muted small mb-0"><strong>Цілодобово 24/7</strong> (без перерв та вихідних)</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3">
+                            <div class="text-amber fs-4"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <h3 class="h6 text-white mb-1">Телефон для замовлень</h3>
+                                <a href="tel:+380970000000" class="text-amber fw-bold text-decoration-none">+38 (097) 000-00-00</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Simulated Map Component -->
-                <div class="col-lg-6 map-container">
-                    <div class="map-card card shadow overflow-hidden border-0">
-                        <div class="map-mockup position-relative">
-                            <div class="map-overlay-center position-absolute top-50 start-50 translate-middle text-center" style="z-index: 2;">
-                                <div class="map-pin pulse-pin text-danger fs-2 mb-1">
-                                    <i class="fa-solid fa-utensils"></i>
-                                </div>
-                                <div class="map-popup card p-2 shadow-sm text-start" style="font-size: 0.8rem;">
-                                    <strong>Кафе "Вечірній вокзал"</strong>
-                                    <span>пл. Двірцева, м. Львів</span>
-                                    <span class="badge-247 badge bg-success-subtle text-success">🟢 24/7 Відчинено</span>
-                                </div>
+                <div class="col-lg-6">
+                    <div class="glass-card overflow-hidden p-2">
+                        <div class="rounded-3 overflow-hidden position-relative" style="height: 280px;">
+                            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800&auto=format&fit=crop" alt="Карта Львова" class="w-100 h-100 object-fit-cover opacity-75">
+                            <div class="position-absolute top-50 start-50 translate-middle text-center bg-dark p-3 rounded-3 border border-amber shadow">
+                                <i class="fa-solid fa-train text-amber fs-3 mb-2 d-block"></i>
+                                <strong class="d-block text-white">Кафе "Вечірній вокзал"</strong>
+                                <small class="text-success">🟢 Відчинено зараз</small>
                             </div>
-                            <img src="assets/images/hero.png" alt="Карта доїзду" class="map-bg-img img-fluid w-100" style="filter: brightness(0.9); object-fit: cover; height: 260px;">
                         </div>
-                        <div class="map-footer p-3 bg-white">
-                            <a href="https://maps.google.com/?q=Львів+Залізничний+вокзал" target="_blank" rel="noopener" class="btn btn-primary btn-block w-100">
+                        <div class="p-3 text-center">
+                            <a href="https://maps.google.com/?q=Львів+Залізничний+вокзал" target="_blank" rel="noopener" class="btn btn-amber w-100">
                                 <i class="fa-solid fa-map-location-dot me-2"></i>Відкрити в Google Maps
                             </a>
                         </div>
@@ -622,77 +684,179 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer bg-dark text-white py-4">
-        <div class="container footer-container">
-            <div class="row gy-4">
-                <div class="col-md-4 footer-brand">
-                    <div class="brand-logo d-flex align-items-center gap-2 mb-2">
-                        <div class="logo-icon text-primary fs-4"><i class="fa-solid fa-train"></i></div>
-                        <span class="brand-name fs-5 fw-bold">Вечірній Вокзал</span>
-                    </div>
-                    <p class="footer-tagline text-secondary small">Домашня кухня, затишок та гостинність у Львові 24 години на добу.</p>
-                </div>
-                <div class="col-md-4 footer-links">
-                    <h4 class="h6 mb-3 text-white">Навігація</h4>
-                    <div class="d-flex flex-column gap-1">
-                        <a href="#hero" class="text-secondary text-decoration-none small">Головна</a>
-                        <a href="#about" class="text-secondary text-decoration-none small">Про нас</a>
-                        <a href="#menu" class="text-secondary text-decoration-none small">Меню</a>
-                        <a href="#reviews" class="text-secondary text-decoration-none small">Відгуки</a>
-                        <a href="#location" class="text-secondary text-decoration-none small">Контакти</a>
-                    </div>
-                </div>
-                <div class="col-md-4 footer-meta">
-                    <h4 class="h6 mb-3 text-white">Статус сайту</h4>
-                    <div class="github-badge badge bg-secondary mb-2">
-                        <i class="fa-brands fa-github me-1"></i>
-                        <span>Hosted on GitHub Pages</span>
-                    </div>
-                    <p class="copy-text text-secondary small mb-0">&copy; 2026 Кафе "Вечірній вокзал". Усі права захищено.</p>
-                </div>
+    <footer class="py-4 border-top border-secondary text-muted small" style="background: #080C17;">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+            <div class="d-flex align-items-center gap-2">
+                <i class="fa-solid fa-train text-amber"></i>
+                <span class="text-white fw-bold">Кафе "Вечірній вокзал"</span>
+                <span>— Львівська гостинність 24/7</span>
+            </div>
+            <div>
+                <span>&copy; 2026 Кафе "Вечірній вокзал". Усі права захищено.</span>
             </div>
         </div>
     </footer>
 
-    <!-- Review Modal -->
-    <div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true">
+    <!-- Review Submission Modal -->
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title h5">Залишити відгук про кафе</h3>
-                    <button type="button" class="btn-close" id="closeModalBtn" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content bg-dark text-white border-secondary">
+                <div class="modal-header border-secondary">
+                    <h3 class="modal-title h5 font-heading" id="reviewModalLabel">Залишити відгук</h3>
+                    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="addReviewForm" onsubmit="handleReviewSubmit(event)">
-                        <div class="form-group mb-3">
-                            <label for="reviewerNameInput" class="form-label">Ваше ім'я:</label>
-                            <input type="text" id="reviewerNameInput" class="form-control" placeholder="Наприклад: Андрій" required>
+                        <div class="mb-3">
+                            <label for="reviewerName" class="form-label text-muted">Ваше ім'я:</label>
+                            <input type="text" id="reviewerName" class="form-control bg-secondary text-white border-0" placeholder="Наприклад: Олена" required>
                         </div>
-                        <div class="form-group mb-3">
-                            <label class="form-label d-block">Ваша оцінка:</label>
-                            <div class="star-rating-select text-warning fs-4 d-flex gap-1" id="starSelect">
-                                <i class="fa-solid fa-star active" data-rating="1" style="cursor: pointer;"></i>
-                                <i class="fa-solid fa-star active" data-rating="2" style="cursor: pointer;"></i>
-                                <i class="fa-solid fa-star active" data-rating="3" style="cursor: pointer;"></i>
-                                <i class="fa-solid fa-star active" data-rating="4" style="cursor: pointer;"></i>
-                                <i class="fa-solid fa-star active" data-rating="5" style="cursor: pointer;"></i>
+                        <div class="mb-3">
+                            <label class="form-label text-muted d-block">Ваша оцінка:</label>
+                            <div class="star-select text-gold fs-4 d-flex gap-1" id="starSelector">
+                                <i class="fa-solid fa-star" data-value="1"></i>
+                                <i class="fa-solid fa-star" data-value="2"></i>
+                                <i class="fa-solid fa-star" data-value="3"></i>
+                                <i class="fa-solid fa-star" data-value="4"></i>
+                                <i class="fa-solid fa-star" data-value="5"></i>
                             </div>
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="reviewTextInput" class="form-label">Ваш відгук:</label>
-                            <textarea id="reviewTextInput" class="form-control" rows="4" placeholder="Розкажіть про свої враження, борщик або обслуговування..." required></textarea>
+                        <div class="mb-3">
+                            <label for="reviewText" class="form-label text-muted">Ваші враження:</label>
+                            <textarea id="reviewText" class="form-control bg-secondary text-white border-0" rows="4" placeholder="Розкажіть про борщик, атмосферу чи комплімент..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Опублікувати відгук</button>
+                        <button type="submit" class="btn btn-amber w-100 py-2">Опублікувати відгук</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Notification Toast -->
+    <div id="customToast">Повідомлення</div>
+
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom Script -->
-    <script src="script.js"></script>
+    <script>
+        // State
+        let selectedStars = 5;
+        let totalCount = 29;
+        let currentTotalScore = 3.3 * 29;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initCategoryTabs();
+            initStarPicker();
+        });
+
+        // Menu Tab Filtering
+        function initCategoryTabs() {
+            const tabs = document.querySelectorAll('.menu-tab-btn');
+            const items = document.querySelectorAll('.menu-item');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    const category = tab.getAttribute('data-category');
+                    items.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        if (category === 'all' || itemCategory === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Star Selection
+        function initStarPicker() {
+            const stars = document.querySelectorAll('#starSelector i');
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    selectedStars = parseInt(star.getAttribute('data-value'));
+                    stars.forEach((s, idx) => {
+                        if (idx < selectedStars) {
+                            s.className = 'fa-solid fa-star';
+                        } else {
+                            s.className = 'fa-regular fa-star';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Handle Review Submission
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('reviewerName').value.trim();
+            const text = document.getElementById('reviewText').value.trim();
+            if (!name || !text) return;
+
+            // Generate Stars HTML
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                starsHtml += i <= selectedStars ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+            }
+
+            const initial = name.charAt(0).toUpperCase();
+            const grid = document.getElementById('reviewsGrid');
+            const col = document.createElement('div');
+            col.className = 'col-md-4';
+            col.innerHTML = `
+                <div class="glass-card p-4 h-100 d-flex flex-column border-amber">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="rounded-circle bg-warning text-dark fw-bold d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">${escapeHtml(initial)}</div>
+                        <div>
+                            <h4 class="h6 text-white mb-0">${escapeHtml(name)}</h4>
+                            <small class="text-dim">Щойно</small>
+                        </div>
+                        <div class="ms-auto text-gold small">${starsHtml}</div>
+                    </div>
+                    <p class="text-white small fst-italic flex-grow-1">"${escapeHtml(text)}"</p>
+                    <span class="badge bg-warning text-dark align-self-start">✨ Новий відгук</span>
+                </div>
+            `;
+            grid.insertBefore(col, grid.firstChild);
+
+            // Update stats
+            totalCount += 1;
+            currentTotalScore += selectedStars;
+            const newAvg = (currentTotalScore / totalCount).toFixed(1);
+            document.getElementById('avgScoreDisplay').innerText = newAvg;
+            document.getElementById('totalReviewsDisplay').innerText = `Загалом ${totalCount} відгуків`;
+
+            // Close Modal
+            const modalEl = document.getElementById('reviewModal');
+            const modalInstance = bootstrap.Modal.getInstance(modalEl);
+            if (modalInstance) modalInstance.hide();
+
+            document.getElementById('addReviewForm').reset();
+            showToast('Дякуємо! Ваш відгук успішно додано.');
+        }
+
+        // Toast Notification
+        function showToast(msg) {
+            const toast = document.getElementById('customToast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3500);
+        }
+
+        function orderItem(itemName) {
+            showToast(`"${itemName}" додано! Телефонуйте: +38 (097) 000-00-00`);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.innerText = text;
+            return div.innerHTML;
+        }
+    </script>
 </body>
 </html>
